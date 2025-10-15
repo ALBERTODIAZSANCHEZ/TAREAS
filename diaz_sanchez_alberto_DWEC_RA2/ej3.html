@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJ3 · Suma del 1 al N</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <h1>EJ3 · Suma del 1 al N</h1>
+  <p class="expl">
+    Pido un número N. Si no es número o es menor que 1, muestro error (uso <code>isNaN</code>).
+    Si es correcto, sumo del 1 al N usando un bucle y lo escribo en la página.
+  </p>
+  <hr>
+
+  <script>
+    var N = Number(prompt("Introduce un número N (entero, >= 1):"));
+
+    if (isNaN(N) || N < 1 || (N % 1 !== 0)) {
+      document.write("<p>❌ Debes introducir un número entero mayor o igual que 1.</p>");
+    } else {
+      var suma = 0;
+      for (var i = 1; i <= N; i++) {
+        suma = suma + i;
+      }
+      document.write("<p>La suma de los números del 1 al " + N + " es " + suma + ".</p>");
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJ4 · Acumular hasta superar 100</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <h1>EJ4 · Acumular números hasta superar 100</h1>
+  <p class="expl">
+    Voy pidiendo números y los acumulo mientras el total no supere 100.
+    Cuando se pase de 100, muestro el total y el contador de números introducidos.
+  </p>
+  <hr>
+
+  <script>
+    var suma = 0;
+    var contador = 0;
+
+    // Mientras NO hayamos superado 100, seguimos pidiendo
+    while (suma <= 100) {
+      var txt = prompt("Introduce un número (acumulado actual: " + suma + ").");
+      // Si cancelan el prompt, salgo para evitar bucle infinito
+      if (txt === null) {
+        break;
+      }
+      var num = Number(txt);
+
+      if (isNaN(num)) {
+        alert("❌ Eso no es un número. Inténtalo de nuevo.");
+        continue; // no sumo ni cuento
+      }
+
+      // Decisión: permito negativos? El enunciado no lo aclara. Los permito.
+      suma = suma + num;
+      contador = contador + 1;
+    }
+
+    if (contador === 0) {
+      document.write("<p>No se introdujo ningún número.</p>");
+    } else {
+      document.write("<p>✅ Se ha terminado. Total acumulado: " + suma + ". Números introducidos: " + contador + ".</p>");
+    }
+  </script>
+</body>
+</html>

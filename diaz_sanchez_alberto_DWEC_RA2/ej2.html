@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EJ2 · Menor de tres números</title>
+  <link rel="stylesheet" href="css/estilos.css">
+</head>
+<body>
+  <h1>EJ2 · Menor de tres números</h1>
+  <p class="expl">
+    Pido tres números por <code>prompt</code>, reviso que sean números y digo cuál es el menor.
+    Si hay empates, lo digo también.
+  </p>
+  <hr>
+
+  <script>
+    var a = Number(prompt("Número 1:"));
+    var b = Number(prompt("Número 2:"));
+    var c = Number(prompt("Número 3:"));
+
+    if (isNaN(a) || isNaN(b) || isNaN(c)) {
+      document.write("<p>❌ Debes introducir los tres números correctamente.</p>");
+    } else {
+      // Hallar el menor a mano
+      var menor = a;
+      if (b < menor) menor = b;
+      if (c < menor) menor = c;
+
+      // Contar cuántas veces aparece el menor (por si hay empate)
+      var rep = 0;
+      if (a === menor) rep++;
+      if (b === menor) rep++;
+      if (c === menor) rep++;
+
+      if (rep > 1) {
+        document.write("<p>El menor es " + menor + " (aparece " + rep + " veces).</p>");
+      } else {
+        document.write("<p>El menor es " + menor + ".</p>");
+      }
+    }
+  </script>
+</body>
+</html>
