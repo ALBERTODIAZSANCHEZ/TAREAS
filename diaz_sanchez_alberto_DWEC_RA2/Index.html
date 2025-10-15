@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>DWEC · RA2 · Índice de ejercicios</title>
+  <!-- Reutilizamos el mismo CSS común -->
+  <link rel="stylesheet" href="css/estilos.css">
+  <style>
+    
+    nav ul { list-style: none; padding: 0; margin: 0; }
+    nav li { margin: .5rem 0; }
+    .card { border: 1px solid #ddd; border-radius: .5rem; padding: .75rem; margin-bottom: 1rem; background: #fff; }
+    .small { color: #555; font-size: .95rem; margin: .25rem 0 0 0; }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>DWEC · RA2 · Índice</h1>
+    <p class="expl">
+      Aquí tienes los enlaces a cada ejercicio. Cada página usa <code>prompt</code>, <code>Number</code>,
+      <code>isNaN</code>, condicionales y bucles básicos, tal como pide la unidad.
+    </p>
+    <hr>
+  </header>
+
+  <main>
+    <nav aria-label="Listado de ejercicios">
+      <ul>
+        <li class="card">
+          <a href="ej1.html">EJ1 — Nombre, edad y mayor/menor</a>
+          <p class="small">Pide nombre y edad y muestra: “Hola ___, tienes ___ años, eres (mayor/menor) de edad”.</p>
+        </li>
+        <li class="card">
+          <a href="ej2.html">EJ2 — Menor de tres números</a>
+          <p class="small">Solicita tres números y dice cuál es el menor (avisa si hay empate).</p>
+        </li>
+        <li class="card">
+          <a href="ej3.html">EJ3 — Suma del 1 al N</a>
+          <p class="small">Valida el número con <code>isNaN</code> y suma del 1 a N con un bucle.</p>
+        </li>
+        <li class="card">
+          <a href="ej4.html">EJ4 — Acumular hasta superar 100</a>
+          <p class="small">Va pidiendo números y acumula hasta pasar de 100; muestra total y cuántos has metido.</p>
+        </li>
+        <li class="card">
+          <a href="ej5.html">EJ5 — Tablas de multiplicar 1..N</a>
+          <p class="small">Genera las tablas del 1 al N con bucles anidados (tope razonable para no saturar).</p>
+        </li>
+      </ul>
+    </nav>
+  </main>
+
+  <footer>
+    <hr>
+    <p class="small">Entrega: <strong>DWEC · RA2</strong> · <span id="hoy"></span></p>
+  </footer>
+
+    <script>
+        // Fecha actual en el pie de página
+        var hoy = new Date();
+        var opciones = { year: 'numeric', month: 'long', day: 'numeric' };
+        document.getElementById("hoy").textContent = hoy.toLocaleDateString('es-ES', opciones);
+    </script>
+</body>
+</html>
