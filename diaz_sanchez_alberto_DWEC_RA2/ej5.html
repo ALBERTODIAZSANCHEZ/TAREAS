@@ -3,43 +3,67 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EJ5 · Tablas de multiplicar 1..N</title>
-  <link rel="stylesheet" href="./css/estilos.css">
+  <title>EJ5 · Tablas 1..N (simple)</title>
+
+  <!-- CSS muy básico -->
+  <style>
+    body{ margin:0; font-family: Arial, sans-serif; background:#f5f5f5; color:#222; }
+    .wrap{ max-width: 800px; margin:20px auto; padding:0 12px; text-align:center; }
+    .card{ background:#fff; border:1px solid #ddd; border-radius:8px; padding:10px; }
+    .tablas{ display:grid; grid-template-columns:repeat(auto-fit,minmax(160px,1fr)); gap:8px; margin-top:8px; }
+    .tabla{ border:1px solid #e3e3e3; border-radius:6px; padding:8px; background:#fafafa; text-align:left; }
+    .tabla h3{ margin:0 0 6px 0; font-size:1rem; }
+    .fila{ padding:3px 0; border-bottom:1px dashed #e9e9e9; }
+    .fila:last-child{ border-bottom:0; }
+    .btn{ display:inline-block; margin-top:10px; padding:8px 12px; border:1px solid #bbb; border-radius:6px; background:#eee; color:#222; text-decoration:none; }
+    .error{ margin-top:8px; padding:8px; border:1px solid #f2b5b5; background:#fdecec; color:#a80000; border-radius:6px; }
+  </style>
 </head>
 <body>
   <main class="wrap">
     <h1>EJ5 · Tablas de multiplicar (1 a N)</h1>
-    <p class="expl">
-      Pido un N (entero, &ge;1). Genero las tablas del 1 al N con bucles anidados.
-      Para no saturar, si es muy grande aviso (propongo máximo 20).
-    </p>
-    <hr>
 
     <script>
-      var N = Number(prompt("Introduce N para generar tablas (entero, >= 1, máximo 20):"));
+      // 1) Pedimos N al usuario
+      var entrada = prompt("Introduce N (entero, >= 1, máximo 20):");
 
+      // 2) Convertimos a número
+      var N = Number(entrada);
+
+      // 3) Validamos que sea un número, entero y >= 1
       if (isNaN(N) || (N % 1 !== 0) || N < 1) {
-        document.write('<div class="card"><p class="error">❌ Debes introducir un entero mayor o igual que 1.</p></div>');
+        // 3.a) Si no es válido, mostramos un mensaje de error
+        document.write('<div class="card"><p class="error">Debes introducir un entero mayor o igual que 1.</p></div>');
       } else if (N > 20) {
-        document.write('<div class="card"><p class="error">⚠️ N es muy grande para mostrar aquí (máximo 20).</p></div>');
+        // 3.b) Limite superior para no llenar la página
+        document.write('<div class="card"><p class="error">Para no saturar, el máximo es 20.</p></div>');
       } else {
-        // Tarjeta contenedora de todas las tablas, para que quede centrado
+        // 4) Si es válido: creamos un contenedor y un grid para las tablas
         document.write('<div class="card">');
-        // Tablas del 1 al N
+        document.write('<div class="tablas">');
+
+        // 5) Bucle externo: recorre del 1 a N → una tabla por cada número
         for (var t = 1; t <= N; t++) {
+          document.write('<div class="tabla">');
           document.write('<h3>Tabla del ' + t + '</h3>');
+
+          // 6) Bucle interno: del 1 al 10 → filas de multiplicación
           for (var i = 1; i <= 10; i++) {
-            document.write('<div class="fila linea">' + t + ' × ' + i + ' = ' + (t * i) + '</div>');
+            var resultado = t * i; // 6.a) cálculo simple
+            document.write('<div class="fila">' + t + ' × ' + i + ' = ' + resultado + '</div>');
           }
-          document.write('<hr>');
+
+          document.write('</div>'); // cierre .tabla
         }
-        document.write('</div>');
+
+        // 7) Cerramos los contenedores
+        document.write('</div>');  // cierre .tablas
+        document.write('</div>');  // cierre .card
       }
     </script>
 
-    <div style="margin-top:1rem">
-      <a href="./index.html" class="btn-volver">Volver al índice</a>
-    </div>
+    <!-- 8) Enlace para volver al índice -->
+    <a href="./index.html" class="btn">Volver al índice</a>
   </main>
 </body>
 </html>

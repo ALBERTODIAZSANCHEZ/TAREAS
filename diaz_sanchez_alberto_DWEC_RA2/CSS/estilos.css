@@ -194,3 +194,6 @@ nav[aria-label="Volver al índice"]{
   margin: 1rem auto;                 
   text-align: center;
 }
+body.ej5{
+  align-items: flex-start;  
+}
