@@ -4,51 +4,61 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>EJ1 · Mayor o menor de edad</title>
-  <link rel="stylesheet" href="css/estilos.css">
+  <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-  <h1>EJ1 · Mayor o menor de edad</h1>
-  <p class="expl">
-    Pido por <code>prompt</code> el nombre y la edad. Compruebo que el nombre no lleva números y que la edad
-    es un entero &ge; 0. Luego escribo el mensaje exacto que pide el enunciado.
-  </p>
-  <hr>
 
-  <script>
-    // Pedir datos
-    var nombre = prompt("Escribe tu nombre:");
-    var edadTexto = prompt("Escribe tu edad (entera, >= 0):");
 
-    // Quitar espacios a los lados (tema básico: trim manual si no se quiere usar métodos, pero aquí usamos String.trim)
-    if (nombre !== null) nombre = nombre.trim();
+  <!-- Contenedor centrado (el CSS ya lo centra) -->
+  <main class="wrap">
+    <h1>EJ1 · Mayor o menor de edad</h1>
+    <p class="expl">
+      Pido por <code>prompt</code> el nombre y la edad. Compruebo que el nombre no lleva números y que la edad
+      es un entero ≥ 0. Después escribo el mensaje exacto que pide el enunciado.
+    </p>
+    <hr>
 
-    // Validar nombre: no vacío y sin dígitos
-    var nombreValido = true;
-    if (nombre === null || nombre === "") {
-      nombreValido = false;
-    } else {
-      // Si aparece un número en el nombre, no vale
-      for (var i = 0; i < nombre.length; i++) {
-        var ch = nombre.charAt(i);
-        if (ch >= "0" && ch <= "9") {
-          nombreValido = false;
-          break;
+    <script>
+      // Pedir datos
+      var nombre = prompt("Escribe tu nombre:");
+      var edadTexto = prompt("Escribe tu edad (entera, >= 0):");
+
+      if (nombre !== null) { nombre = nombre.trim(); }
+
+      // Validar nombre: no vacío y sin dígitos
+      var nombreValido = true;
+      if (nombre === null || nombre === "") {
+        nombreValido = false;
+      } else {
+        for (var i = 0; i < nombre.length; i++) {
+          var ch = nombre.charAt(i);
+          if (ch >= "0" && ch <= "9") { nombreValido = false; break; }
         }
       }
-    }
 
-    // Validar edad: número entero >= 0
-    var edadNum = Number(edadTexto);
-    var edadValida = !(isNaN(edadNum)) && (edadNum >= 0) && (edadNum % 1 === 0);
+      // Validar la edad como número entero >= 0
+      var edadNum = Number(edadTexto);
+      var edadValida = !(isNaN(edadNum)) && (edadNum >= 0) && (edadNum % 1 === 0);
 
-    if (!nombreValido) {
-      document.write("<p>❌ El nombre no es válido (vacío o contiene números).</p>");
-    } else if (!edadValida) {
-      document.write("<p>❌ La edad debe ser un número entero mayor o igual que 0.</p>");
-    } else {
-      var etiqueta = (edadNum >= 18) ? "mayor" : "menor";
-      document.write("<p>Hola " + nombre + ", tienes " + edadNum + " años, eres " + etiqueta + " de edad.</p>");
-    }
-  </script>
+      // Abro una “tarjeta” para que el resultado quede bonito y centrado
+      document.write('<div class="card">');
+
+      if (!nombreValido) {
+        document.write('<p class="error">❌ El nombre no es válido, escribe un nombre sin numeros.</p>');
+      } else if (!edadValida) {
+        document.write('<p class="error">❌ La edad debe ser un número sin decimales mayor o igual que 0.</p>');
+      } else {
+        var etiqueta = (edadNum >= 18) ? "mayor" : "menor";
+        document.write('<p class="resultado">Hola ' + nombre + ', tienes ' + edadNum + ' años, eres ' + etiqueta + ' de edad.</p>');
+      }
+
+      document.write('</div>'); 
+    </script>
+
+    <!-- Boton de volver al índice -->
+    <div style="margin-top:1rem">
+      <a href="Index.html" class="btn-volver">Volver al índice</a>
+    </div>
+  </main>
 </body>
 </html>
