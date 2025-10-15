@@ -7,42 +7,48 @@
   <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-  <h1>EJ2 · Menor de tres números</h1>
-  <p class="expl">
-    Pido tres números por <code>prompt</code>, reviso que sean números y digo cuál es el menor.
-    Si hay empates, lo digo también.
-  </p>
-  <hr>
+  <main class="wrap">
+    <h1>EJ2 · Menor de tres números</h1>
+    <p class="expl">
+      Pido tres números por <code>prompt</code>, reviso que sean números y digo cuál es el menor.
+      Si hay empates, lo digo también.
+    </p>
+    <hr>
 
-  <script>
-    var a = Number(prompt("Número 1:"));
-    var b = Number(prompt("Número 2:"));
-    var c = Number(prompt("Número 3:"));
+    <script>
+      var a = Number(prompt("Número 1:"));
+      var b = Number(prompt("Número 2:"));
+      var c = Number(prompt("Número 3:"));
 
-    if (isNaN(a) || isNaN(b) || isNaN(c)) {
-      document.write("<p>❌ Debes introducir los tres números correctamente.</p>");
-    } else {
-      // Hallar el menor a mano
-      var menor = a;
-      if (b < menor) menor = b;
-      if (c < menor) menor = c;
+      document.write('<div class="card">');
 
-      // Contar cuántas veces aparece el menor (por si hay empate)
-      var rep = 0;
-      if (a === menor) rep++;
-      if (b === menor) rep++;
-      if (c === menor) rep++;
-
-      if (rep > 1) {
-        document.write("<p>El menor es " + menor + " (aparece " + rep + " veces).</p>");
+      if (isNaN(a) || isNaN(b) || isNaN(c)) {
+        document.write('<p class="error">❌ Debes introducir los tres números correctamente.</p>');
       } else {
-        document.write("<p>El menor es " + menor + ".</p>");
+        // Hallar el menor a mano
+        var menor = a;
+        if (b < menor) menor = b;
+        if (c < menor) menor = c;
+
+        // Contar cuántas veces aparece el menor (por si hay empate)
+        var rep = 0;
+        if (a === menor) rep++;
+        if (b === menor) rep++;
+        if (c === menor) rep++;
+
+        if (rep > 1) {
+          document.write('<p class="resultado">El menor es ' + menor + ' (aparece ' + rep + ' veces).</p>');
+        } else {
+          document.write('<p class="resultado">El menor es ' + menor + '.</p>');
+        }
       }
-    }
-        <!-- Boton de volver al índice -->
+
+      document.write('</div>');
+    </script>
+
     <div style="margin-top:1rem">
-      <a href="Index.html" class="btn-volver">Volver al índice</a>
+      <a href="./index.html" class="btn-volver">Volver al índice</a>
     </div>
-  </script>
+  </main>
 </body>
 </html>

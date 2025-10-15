@@ -7,29 +7,35 @@
   <link rel="stylesheet" href="./css/estilos.css">
 </head>
 <body>
-  <h1>EJ3 · Suma del 1 al N</h1>
-  <p class="expl">
-    Pido un número N. Si no es número o es menor que 1, muestro error (uso <code>isNaN</code>).
-    Si es correcto, sumo del 1 al N usando un bucle y lo escribo en la página.
-  </p>
-  <hr>
+  <main class="wrap">
+    <h1>EJ3 · Suma del 1 al N</h1>
+    <p class="expl">
+      Pido un número N. Si no es número o es menor que 1, muestro error (uso <code>isNaN</code>).
+      Si es correcto, sumo del 1 al N usando un bucle y lo escribo en la página.
+    </p>
+    <hr>
 
-  <script>
-    var N = Number(prompt("Introduce un número N (entero, >= 1):"));
+    <script>
+      var N = Number(prompt("Introduce un número N (entero, >= 1):"));
 
-    if (isNaN(N) || N < 1 || (N % 1 !== 0)) {
-      document.write("<p>❌ Debes introducir un número entero mayor o igual que 1.</p>");
-    } else {
-      var suma = 0;
-      for (var i = 1; i <= N; i++) {
-        suma = suma + i;
+      document.write('<div class="card">');
+
+      if (isNaN(N) || N < 1 || (N % 1 !== 0)) {
+        document.write('<p class="error">❌ Debes introducir un número entero mayor o igual que 1.</p>');
+      } else {
+        var suma = 0;
+        for (var i = 1; i <= N; i++) {
+          suma = suma + i;
+        }
+        document.write('<p class="resultado">La suma de los números del 1 al ' + N + ' es ' + suma + '.</p>');
       }
-      document.write("<p>La suma de los números del 1 al " + N + " es " + suma + ".</p>");
-    }
-            <!-- Boton de volver al índice -->
+
+      document.write('</div>');
+    </script>
+
     <div style="margin-top:1rem">
-      <a href="Index.html" class="btn-volver">Volver al índice</a>
+      <a href="./index.html" class="btn-volver">Volver al índice</a>
     </div>
-  </script>
+  </main>
 </body>
 </html>
